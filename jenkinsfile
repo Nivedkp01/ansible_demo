@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        docker {
+            image 'cytopia/ansible:latest'
+        }
+    }
+    stages {
+        stage('Run Ansible') {
+            steps {
+                sh 'ansible-playbook -i inventory playbook.yml'
+            }
+        }
+    }
+}
